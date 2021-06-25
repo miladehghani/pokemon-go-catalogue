@@ -1,3 +1,8 @@
-export const App = () => {
-  return <h1>Pokemon-go app</h1>;
-};
+import { BrowserRouter } from "react-router-dom";
+import { UserRoutes } from "routes";
+
+export const App = () => (
+  <BrowserRouter>
+    <UserRoutes />
+  </BrowserRouter>
+);
