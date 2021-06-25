@@ -1,0 +1,43 @@
+body,
+#root {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fonts */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Stylling Scroll Bars - This only work in Chrome */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  border-radius: 15px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #4c4c4c;
+  border-radius: 15px;
+}
+
+::-webkit-resizer {
+  display: none;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #424242;
+}
