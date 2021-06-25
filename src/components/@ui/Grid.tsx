@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const Grid = styled.div`
+interface GridProps {
+  height?: string;
+}
+
+export const Grid = styled.div<GridProps>`
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   gap: 16px;
-  height: 88vh;
+  height: ${(props) => props.height || "100%"};
+  width: 100%;
   overflow: hidden auto;
   padding: 1% 0;
 
