@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
 import { RouteType } from "types";
-import { Home } from "pages/Home";
+import { PokemonListPage } from "pages/PokemonListPage";
 import { Generations } from "pages/Generations";
 import { Favourits } from "pages/Favourits";
 import { PokemonDetailsPage } from "pages/PokemonDetailsPage";
@@ -12,7 +12,7 @@ const routes: RouteType[] = [
   {
     path: "/",
     exact: true,
-    component: Home,
+    component: PokemonListPage,
   },
   {
     path: "/pokemon/:pokemonId",
