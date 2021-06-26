@@ -5,13 +5,18 @@ import { pokemonService } from "services/pokemonService";
 import { PokemonList } from "components/PokemonList";
 import { QueryKeys } from "types/QueryKeys";
 import { Loading } from "components/Loading";
+import { useParams } from "react-router-dom";
 
 export const Species = () => {
   const searchInput = useInput("");
-
-  const { isLoading, error, data } = useQuery(
+  const { speciesId } = useParams<any>();
+  const {
+    isLoading,
+    error,
+    data: species,
+  } = useQuery(
     QueryKeys.pokemonsList,
-    pokemonService.fetchAllPokemon,
+    () => pokemonService.getSpeciesById(speciesId),
     {
       refetchOnWindowFocus: false,
     }
@@ -19,9 +24,9 @@ export const Species = () => {
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error fetching data ... </p>;
-  if (!data) return null;
-
-  const filteredPokemons = data.results.filter((resource) =>
+  if (!species || !species.varieties) return null;
+  const pokemons = species.varieties.map((varieties) => varieties.pokemon);
+  const filteredPokemons = pokemons.filter((resource) =>
     resource.name.includes(searchInput.value)
   );
 

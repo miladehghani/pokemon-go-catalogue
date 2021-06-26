@@ -15,7 +15,7 @@ export const GenerationsList = (props: GenerationsListProps) => {
 
   useEffect(() => {
     props.onChange(extractIdFromUrl(selected.url));
-  }, [selected]);
+  }, [selected, props.onChange]);
 
   if (props.generations.length === 0)
     return (

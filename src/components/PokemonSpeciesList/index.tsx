@@ -7,6 +7,9 @@ import { Center } from "components/@ui/Center";
 import { Input } from "components/@ui/Input";
 import { QueryKeys } from "types/QueryKeys";
 import { pokemonService } from "services/pokemonService";
+import { useHistory } from "react-router-dom";
+import { Resource } from "types/pokemon";
+import { extractIdFromUrl } from "utils/string";
 
 interface PokemonSpeciesListProps {
   generationId: number;
@@ -25,6 +28,11 @@ export const PokemonSpeciesList = ({
     { refetchOnWindowFocus: false }
   );
   const searchInput = useInput("");
+  const history = useHistory();
+
+  const onClickCard = (specie: Resource) => {
+    history.push(`/species/${extractIdFromUrl(specie.url)}`);
+  };
 
   if (error) return <p>Error</p>;
   if (isLoading) return <Loading />;
@@ -32,7 +40,7 @@ export const PokemonSpeciesList = ({
   if (!generation) return null;
   const { pokemon_species: species } = generation;
 
-  if (species.length === 0)
+  if (!species || species.length === 0)
     return (
       <Center>
         <p>No Result found ...</p>
@@ -44,9 +52,11 @@ export const PokemonSpeciesList = ({
         <Input {...searchInput} placeholder="Search by name" />
         <Grid height="calc(100vh - 157px)">
           {species
-            .filter((specie) => specie.name.includes(searchInput.value))
+            // .filter((specie) => specie.name.includes(searchInput.value))
             .map((specie) => (
-              <SpeciesContainer>{specie.name}</SpeciesContainer>
+              <SpeciesContainer onClick={() => onClickCard(specie)}>
+                {specie.name}
+              </SpeciesContainer>
             ))}
         </Grid>
       </>

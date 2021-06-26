@@ -19,7 +19,7 @@ export const Home = () => {
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error fetching data ... </p>;
-  if (!data) return null;
+  if (!data || !data.results) return null;
 
   const filteredPokemons = data.results.filter((resource) =>
     resource.name.includes(searchInput.value)

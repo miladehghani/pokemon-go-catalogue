@@ -20,7 +20,7 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
     () => count < pokemonsResource.length && setCount(count + 20)
   );
 
-  const onCardClick = (pokemon: Resource) => {
+  const selectHandler = (pokemon: Resource) => {
     if (selectedItems[pokemon.url]) {
       selectedItems[pokemon.url] = false;
     } else {
@@ -55,7 +55,7 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
             key={pokemon.name}
             pokemon={pokemon}
             selected={selectedItems[pokemon.url]}
-            onSelectChange={() => onCardClick(pokemon)}
+            onSelectChange={() => selectHandler(pokemon)}
           />
         ))}
         {numberOfSelectedItems > 0 && (
