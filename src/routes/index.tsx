@@ -1,12 +1,10 @@
 import { Route } from "react-router-dom";
 import { RouteType } from "types";
 import { PokemonListPage } from "pages/PokemonListPage";
-import { Generations } from "pages/Generations";
 import { Favourits } from "pages/Favourits";
 import { PokemonDetailsPage } from "pages/PokemonDetailsPage";
 import { Layout } from "components/Layout";
 import { PokemonCompare } from "pages/PokemonCompare";
-import { Species } from "pages/Species";
 
 const routes: RouteType[] = [
   {
@@ -21,16 +19,6 @@ const routes: RouteType[] = [
   {
     path: "/compare/:pokemonIds",
     component: PokemonCompare,
-  },
-  {
-    path: "/generations",
-    exact: true,
-    component: Generations,
-  },
-  {
-    path: "/species/:speciesId",
-    exact: true,
-    component: Species,
   },
   {
     path: "/favourits",

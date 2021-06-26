@@ -1,4 +1,3 @@
-import { BooleanLiteral } from "typescript";
 import { Name } from "./generation";
 import { Resource } from "./pokemon";
 

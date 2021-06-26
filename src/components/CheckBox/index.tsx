@@ -5,7 +5,6 @@ import { RowContainer } from "components/@ui/FlexBox";
 interface CheckBoxProps {
   label: string;
   _key: string;
-  checked: boolean;
   onChange: (value: boolean) => void;
   margin?: string;
   visiblity?: any;
@@ -17,7 +16,6 @@ export const CheckBox: FC<CheckBoxProps> = (props) => {
       <Input
         id={`checkbox-${props._key}`}
         type="checkbox"
-        checked={props.checked}
         onChange={(e) => props.onChange(e.target.checked)}
       />
       <Label htmlFor={`checkbox-${props._key}`}>{props.label}</Label>

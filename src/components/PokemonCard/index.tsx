@@ -36,7 +36,6 @@ export const PokemonCard = (props: PokemonCardProps) => {
         label="select to compare"
         _key={props.pokemon.name}
         margin="0 0 16px 0"
-        checked={props.selected}
         onChange={props.onSelectChange}
         visiblity={hovered || props.selected ? "visible" : "hidden"}
       />

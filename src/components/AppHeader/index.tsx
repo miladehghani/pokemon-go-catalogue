@@ -6,9 +6,6 @@ export const AppHeader = () => (
     <Link to="/">
       <HeaderButton>Home</HeaderButton>
     </Link>
-    <Link to="/generations">
-      <HeaderButton>Generations</HeaderButton>
-    </Link>
     <Link to="/favourits">
       <HeaderButton>Favourits</HeaderButton>
     </Link>

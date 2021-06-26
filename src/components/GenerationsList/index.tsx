@@ -4,20 +4,34 @@ import { Chips } from "components/@ui/Chips";
 import { RowContainer } from "components/@ui/FlexBox";
 import { Center } from "components/@ui/Center";
 import { extractIdFromUrl } from "utils/string";
+import { useQuery } from "react-query";
+import { QueryKeys } from "types/QueryKeys";
+import { pokemonService } from "services/pokemonService";
 
 interface GenerationsListProps {
-  generations: Resource[];
   onChange: (generationId: number) => void;
 }
 
 export const GenerationsList = (props: GenerationsListProps) => {
-  const [selected, setSelected] = useState<Resource>(props.generations[0]);
+  const [selected, setSelected] = useState<Resource>();
+
+  const {
+    data: generations,
+    isLoading,
+    error,
+  } = useQuery(QueryKeys.generationsList, pokemonService.getGenerations, {
+    refetchOnWindowFocus: false,
+  });
 
   useEffect(() => {
-    props.onChange(extractIdFromUrl(selected.url));
+    selected && props.onChange(extractIdFromUrl(selected.url));
   }, [selected, props.onChange]);
 
-  if (props.generations.length === 0)
+  if (isLoading) return null;
+  if (error) return <p>Error</p>;
+  if (!generations || !generations.results) return null;
+
+  if (generations.results.length === 0)
     return (
       <Center>
         <p>No Result found ...</p>
@@ -26,10 +40,11 @@ export const GenerationsList = (props: GenerationsListProps) => {
   else
     return (
       <RowContainer padding="8px 0">
-        {props.generations.map((generation) => (
+        {generations.results.map((generation) => (
           <Chips
+            key={generation.url}
             onClick={() => setSelected(generation)}
-            active={generation.url === selected.url}
+            active={selected && generation.url === selected.url}
           >
             {generation.name}
           </Chips>

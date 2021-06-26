@@ -7,7 +7,7 @@ const baseUrl = "https://pokeapi.co/api/v2";
 
 class PokemonService {
   async fetchAllPokemon(): Promise<PaginatedResponse<Resource[]>> {
-    return fetch(`${baseUrl}/pokemon?limit=1100`).then((res) => res.json());
+    return fetch(`${baseUrl}/pokemon?limit=2000`).then((res) => res.json());
   }
 
   async getPokemonById(id: number): Promise<Pokemon> {
@@ -19,6 +19,7 @@ class PokemonService {
   }
 
   async getGenerationById(id: number): Promise<Generation> {
+    console.log("id", id);
     return fetch(`${baseUrl}/generation/${id}`).then((res) => res.json());
   }
 
