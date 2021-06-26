@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface CardProps {
   borderRadius?: string;
+  selected?: boolean;
 }
 
 export const Card = styled.div<CardProps>`
@@ -16,8 +17,10 @@ export const Card = styled.div<CardProps>`
   box-shadow: 2px 2px 4px 2px #a7a7a7;
   ${(props) => props.borderRadius && `border-radius: ${props.borderRadius};`}
 
-  :hover {
+  ${(props) =>
+    props.selected &&
+    `
     background: #eeeeee;
     transform: scale(1.03);
-  }
+  `}
 `;

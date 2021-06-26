@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "./Button";
 
 export const Header = styled.header`
   height: 64px;
@@ -12,13 +13,9 @@ export const Header = styled.header`
   margin-bottom: 6px;
 `;
 
-export const HeaderButton = styled.button`
-  background: #fdc00d;
-  color: #2d4494;
-  border-radius: 8px;
+export const HeaderButton = styled(Button)`
   height: 42px;
   width: 150px;
-  border: none;
   font-size: 20px;
   font-weight: 600;
 `;
