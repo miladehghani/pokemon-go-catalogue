@@ -1,3 +1,4 @@
+import { Generation } from "types/generation";
 import { Pokemon, Resource } from "types/pokemon";
 import { PaginatedResponse } from "types/pokemonApi";
 
@@ -10,6 +11,14 @@ class PokemonService {
 
   async getPokemonById(id: number): Promise<Pokemon> {
     return fetch(`${baseUrl}/pokemon/${id}`).then((res) => res.json());
+  }
+
+  async getGenerations(): Promise<PaginatedResponse<Resource[]>> {
+    return fetch(`${baseUrl}/generation`).then((res) => res.json());
+  }
+
+  async getGenerationById(id: number): Promise<Generation> {
+    return fetch(`${baseUrl}/generation/${id}`).then((res) => res.json());
   }
 }
 

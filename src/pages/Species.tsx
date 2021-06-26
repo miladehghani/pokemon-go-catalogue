@@ -6,7 +6,7 @@ import { PokemonList } from "components/PokemonList";
 import { QueryKeys } from "types/QueryKeys";
 import { Loading } from "components/Loading";
 
-export const Home = () => {
+export const Species = () => {
   const searchInput = useInput("");
 
   const { isLoading, error, data } = useQuery(

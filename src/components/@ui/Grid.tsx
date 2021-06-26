@@ -12,6 +12,7 @@ export const Grid = styled.div<GridProps>`
   width: 100%;
   overflow: hidden auto;
   padding: 1% 0;
+  justify-items: center;
 
   @media (min-width: 400.98px) {
     grid-template-columns: repeat(2, 1fr);

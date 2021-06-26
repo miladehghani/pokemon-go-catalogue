@@ -1,4 +1,4 @@
-export const extractIdFromUrl = (url: string) => {
+export const extractIdFromUrl = (url: string): number => {
   const parts = url.split("/");
-  return parts[parts.length - 2];
+  return parseInt(parts[parts.length - 2]);
 };
