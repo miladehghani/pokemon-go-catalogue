@@ -1,9 +1,10 @@
 import { useQuery } from "react-query";
 import { pokemonService } from "services/pokemonService";
 import { QueryKeys } from "types/QueryKeys";
-import { ColumnContainer, RowContainer } from "components/@ui/FlexBox";
+import { RowContainer } from "components/@ui/FlexBox";
 import { PokemonSkills } from "components/PokemonDetails/PokemonSkills";
 import { PokemonSpecification } from "./PokemonSpecification";
+import { Loading } from "components/Loading";
 
 interface PokemonDetails {
   pokemonId: number;
@@ -22,7 +23,7 @@ export const PokemonDetails = (props: PokemonDetails) => {
   );
 
   if (error) return <p>"Error"</p>;
-  if (isLoading) return <p>Loading ...</p>;
+  if (isLoading) return <Loading />;
   if (!pokemon) return null;
 
   return (

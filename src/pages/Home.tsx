@@ -4,6 +4,7 @@ import { Input } from "components/@ui/Input";
 import { pokemonService } from "services/pokemonService";
 import { PokemonList } from "components/PokemonList";
 import { QueryKeys } from "types/QueryKeys";
+import { Loading } from "components/Loading";
 
 export const Home = () => {
   const searchInput = useInput("");
@@ -16,7 +17,7 @@ export const Home = () => {
     }
   );
 
-  if (isLoading) return <p>Loading ...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Error fetching data ... </p>;
   if (!data) return null;
 
