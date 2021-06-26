@@ -5,6 +5,7 @@ import { Generations } from "pages/Generations";
 import { Favourits } from "pages/Favourits";
 import { PokemonDetailsPage } from "pages/PokemonDetailsPage";
 import { Layout } from "components/Layout";
+import { PokemonCompare } from "pages/PokemonCompare";
 
 const routes: RouteType[] = [
   {
@@ -15,6 +16,10 @@ const routes: RouteType[] = [
   {
     path: "/pokemon/:pokemonId",
     component: PokemonDetailsPage,
+  },
+  {
+    path: "/compare/:pokemonIds",
+    component: PokemonCompare,
   },
   {
     path: "/generations",

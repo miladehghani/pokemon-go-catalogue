@@ -2,19 +2,19 @@ import { ColumnContainer, RowContainer } from "components/@ui/FlexBox";
 import { Chips } from "components/@ui/Chips";
 import styled from "styled-components";
 
-interface ChipsList {
+interface ChipsListProps {
   title: string;
   nodeKey: string;
   list: any[];
 }
 
-export const ChipsList = ({ title, nodeKey, list }: ChipsList) => {
+export const ChipsList = ({ title, nodeKey, list }: ChipsListProps) => {
   return (
     <ColumnContainer width="100%" margin="0 0 1% 0" align="flex-start">
       <Label>{title}</Label>
       <RowContainer justify="flex-start" wrap="wrap" width="100%">
         {list.map((node: any) => (
-          <Chips> {node[nodeKey].name}</Chips>
+          <Chips key={node[nodeKey].url}> {node[nodeKey].name}</Chips>
         ))}
       </RowContainer>
     </ColumnContainer>

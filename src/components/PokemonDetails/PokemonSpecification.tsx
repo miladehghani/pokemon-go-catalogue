@@ -14,6 +14,7 @@ export const PokemonSpecification = ({
     <RowContainer align="center" width="100%" overflow="auto">
       <ImageContainer>
         <img
+          alt={pokemon.name}
           width="auto"
           height="75%"
           loading="lazy"

@@ -6,12 +6,12 @@ import { PokemonSkills } from "components/PokemonDetails/PokemonSkills";
 import { PokemonSpecification } from "./PokemonSpecification";
 import { Loading } from "components/Loading";
 
-interface PokemonDetails {
+interface PokemonDetailsProps {
   pokemonId: number;
   width?: string;
 }
 
-export const PokemonDetails = (props: PokemonDetails) => {
+export const PokemonDetails = (props: PokemonDetailsProps) => {
   const {
     data: pokemon,
     isLoading,
@@ -27,7 +27,13 @@ export const PokemonDetails = (props: PokemonDetails) => {
   if (!pokemon) return null;
 
   return (
-    <RowContainer align="flex-start" wrap="wrap" width={props.width}>
+    <RowContainer
+      align="flex-start"
+      wrap="wrap"
+      width={props.width}
+      minWidth={"max(50%, 580px)"}
+      margin="0 16px"
+    >
       <PokemonSpecification pokemon={pokemon} />
       <PokemonSkills pokemon={pokemon} />
     </RowContainer>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PokemonCard } from "components/PokemonCard";
 import { Resource } from "types/pokemon";
 import { Grid } from "components/@ui/Grid";
@@ -6,16 +7,17 @@ import { Center } from "components/@ui/Center";
 import { useInfiniteScroll } from "hooks/infiniteScroll";
 import { useCallback, useState } from "react";
 import { Button } from "components/@ui/Button";
+import { extractIdFromUrl } from "utils/string";
 
 interface PokemonListProps {
   pokemonsResource: Resource[];
 }
 
 export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
-  const [count, setCount] = useState(100);
+  const [count, setCount] = useState(20);
   const [selectedItems, setSelectedItems] = useState<any>([]);
   const onScroll = useInfiniteScroll(
-    () => count < pokemonsResource.length && setCount(count + 100)
+    () => count < pokemonsResource.length && setCount(count + 20)
   );
 
   const onCardClick = (pokemon: Resource) => {
@@ -29,6 +31,11 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
   const clearSelections = useCallback(() => {
     setSelectedItems({});
   }, []);
+
+  const getSelectedItemsIds = () =>
+    Object.entries(selectedItems)
+      .filter(([key, value]) => value)
+      .map(([key, value]) => extractIdFromUrl(key));
 
   const numberOfSelectedItems = Object.values(selectedItems).filter(
     (item) => item
@@ -60,7 +67,11 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
             }
             onClose={clearSelections}
           >
-            {numberOfSelectedItems > 1 && <Button>Compare</Button>}
+            {numberOfSelectedItems > 1 && (
+              <Link to={`/compare/${getSelectedItemsIds().join(",")}`}>
+                <Button>Compare</Button>
+              </Link>
+            )}
           </Snackbar>
         )}
       </Grid>

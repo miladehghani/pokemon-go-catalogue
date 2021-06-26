@@ -8,6 +8,7 @@ export const Header = styled.header`
   background: #2d4494;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
   margin-bottom: 6px;

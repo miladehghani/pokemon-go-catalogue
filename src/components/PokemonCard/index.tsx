@@ -21,7 +21,7 @@ export const PokemonCard = (props: PokemonCardProps) => {
 
   const onCardClick = useCallback(() => {
     history.push(`pokemon/${pokemonId}`);
-  }, [pokemonId]);
+  }, [pokemonId, history]);
 
   return (
     <Card
@@ -35,7 +35,7 @@ export const PokemonCard = (props: PokemonCardProps) => {
       <CheckBox
         label="select to compare"
         _key={props.pokemon.name}
-        margin="4px 0 0 0"
+        margin="0 0 16px 0"
         checked={props.selected}
         onChange={props.onSelectChange}
         visiblity={hovered || props.selected ? "visible" : "hidden"}
