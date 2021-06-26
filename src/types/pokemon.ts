@@ -5,6 +5,8 @@ export interface Pokemon {
   height: number;
   weight: number;
   species: Resource;
+  abilities: Ability[];
+  moves: Move[];
   is_default: boolean;
   base_experience: number;
   forms: Resource[];
@@ -13,6 +15,23 @@ export interface Pokemon {
   stats: Stat[];
   types: Type[];
   held_items: HeldItems[];
+}
+
+export interface Ability {
+  ability: Resource;
+  is_hidden: boolean;
+  slot: number;
+}
+
+export interface Move {
+  move: Resource;
+  version_group_details: versionGroupDetails[];
+}
+
+export interface versionGroupDetails {
+  level_learned_at: number;
+  move_learn_method: Resource;
+  version_group: Resource;
 }
 
 export interface Resource {

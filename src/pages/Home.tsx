@@ -3,13 +3,13 @@ import { useInput } from "hooks/input";
 import { Input } from "components/@ui/Input";
 import { pokemonService } from "services/pokemonService";
 import { PokemonList } from "components/PokemonList";
-import { QueryMutationKeys } from "types/QueryMutationKeys";
+import { QueryKeys } from "types/QueryKeys";
 
 export const Home = () => {
   const searchInput = useInput("");
 
   const { isLoading, error, data } = useQuery(
-    QueryMutationKeys.pokemonsList,
+    QueryKeys.pokemonsList,
     () => pokemonService.fetchAllPokemon(),
     {
       refetchOnWindowFocus: false,

@@ -9,7 +9,7 @@ export const Header = styled.header`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  margin-bottom: 1%;
+  margin-bottom: 6px;
 `;
 
 export const HeaderButton = styled.button`
