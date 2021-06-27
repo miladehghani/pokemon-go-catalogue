@@ -3,29 +3,31 @@ import styled from "styled-components";
 import { RowContainer } from "components/@ui/FlexBox";
 
 interface CheckBoxProps {
-  label: string;
-  _key: string;
+  label?: string;
+  checked: boolean;
   onChange: (value: boolean) => void;
   margin?: string;
-  visiblity?: any;
 }
 
 export const CheckBox: FC<CheckBoxProps> = (props) => {
   return (
-    <RowContainer margin={props.margin} style={{ visibility: props.visiblity }}>
-      <Input
-        id={`checkbox-${props._key}`}
-        type="checkbox"
-        onChange={(e) => props.onChange(e.target.checked)}
-      />
-      <Label htmlFor={`checkbox-${props._key}`}>{props.label}</Label>
-    </RowContainer>
+    <Container
+      margin={props.margin}
+      onClick={() => props.onChange(!props.checked)}
+    >
+      {
+        <span className="material-icons">
+          {props.checked ? "check_box" : "check_box_outline_blank"}
+        </span>
+      }
+      {props.label && <Label>{props.label}</Label>}
+    </Container>
   );
 };
 
-const Input = styled.input`
-  height: 16px;
-  width: 16px;
+const Container = styled(RowContainer)`
+  cursor: pointer;
+  color: ${(props) => props.theme.colors.secondary};
 `;
 
 const Label = styled.label`

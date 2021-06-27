@@ -11,7 +11,7 @@ export const Card = styled.div<CardProps>`
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin: auto;
   width: 90%;
   height: 200px;

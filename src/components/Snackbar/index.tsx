@@ -23,18 +23,30 @@ export const Snackbar: FC<SnackbarProps> = (props) => {
 
 const SnakbarContainer = styled(RowContainer)`
   position: absolute;
+  box-sizing: border-box;
   bottom: 12px;
   right: 12px;
-  height: 42px;
+  height: 48px;
   background: ${(props) => props.theme.colors.secondary};
   border-radius: 12px;
-  width: 30%;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
   color: white;
+  min-width: 40%;
 
   p {
     margin: 0 16px 0 0;
+  }
+
+  @media (max-width: 800px) {
+    min-width: 70%;
+  }
+
+  @media (max-width: 560px) {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
   }
 `;

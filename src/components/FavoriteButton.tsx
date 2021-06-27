@@ -17,9 +17,6 @@ export const FavoriteButton = (props: FavoriteButtonProps) => {
 };
 
 const Span = styled.span`
-  position: absolute;
-  top: 12px;
-  left: 12px;
   color: red;
   cursor: pointer;
 `;
