@@ -50,7 +50,7 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
   if (pokemonsResource.length === 0)
     return (
       <Center>
-        <p>No Result found ...</p>
+        <p data-testid="no-result">No Result found ...</p>
       </Center>
     );
   else
@@ -70,13 +70,19 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
           <Snackbar
             title={
               <>
-                <span>{numberOfSelectedItems}</span> pokemon selected!
+                <span data-testid="snackbar-number">
+                  {numberOfSelectedItems}
+                </span>{" "}
+                pokemon selected!
               </>
             }
             onClose={clearSelections}
           >
             {numberOfSelectedItems > 1 && (
-              <Link to={`/compare/${getSelectedItemsIds().join(",")}`}>
+              <Link
+                data-testid="snackbar-compare-button"
+                to={`/compare/${getSelectedItemsIds().join(",")}`}
+              >
                 <Button>Compare</Button>
               </Link>
             )}

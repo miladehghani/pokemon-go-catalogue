@@ -27,4 +27,5 @@ class PokemonService {
   }
 }
 
+export { PokemonService };
 export const pokemonService = new PokemonService();

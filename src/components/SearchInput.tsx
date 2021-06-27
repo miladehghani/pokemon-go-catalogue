@@ -27,6 +27,7 @@ export const SearchInput = (props: SearchInputProps) => {
     <Container style={style}>
       <SearchIcon className="material-icons">search</SearchIcon>
       <Input
+        data-testid={"search-input"}
         style={{ paddingLeft: "calc(1.5% + 24px)" }}
         placeholder={"Search by name"}
         value={searchText}

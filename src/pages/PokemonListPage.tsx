@@ -26,7 +26,6 @@ export const PokemonListPage = () => {
   } = useQuery(QueryKeys.pokemonsList, pokemonService.fetchAllPokemon, {
     refetchOnWindowFocus: false,
   });
-
   const { data: selectedGeneration } = useQuery(
     QueryKeys.generation + selectedGenerationId,
     () => pokemonService.getGenerationById(selectedGenerationId),

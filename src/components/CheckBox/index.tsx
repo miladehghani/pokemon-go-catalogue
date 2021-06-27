@@ -2,18 +2,19 @@ import { FC } from "react";
 import styled from "styled-components";
 import { RowContainer } from "components/@ui/FlexBox";
 import { IconButton } from "components/IconButton";
-import { defaultTheme } from "theme";
 
 interface CheckBoxProps {
   label?: string;
   checked: boolean;
   onChange: (value: boolean) => void;
   margin?: string;
+  dataTestId?: string;
 }
 
 export const CheckBox: FC<CheckBoxProps> = (props) => {
   return (
     <Container
+      data-testid={props.dataTestId}
       margin={props.margin}
       onClick={() => props.onChange(!props.checked)}
     >

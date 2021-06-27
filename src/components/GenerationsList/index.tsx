@@ -47,6 +47,7 @@ export const GenerationsList = ({ onChange }: GenerationsListProps) => {
       <>
         {generations.results.map((generation) => (
           <Chips
+            data-testid={generation.name}
             key={generation.url}
             onClick={() => onClickChips(generation)}
             active={selected && generation.url === selected.url}

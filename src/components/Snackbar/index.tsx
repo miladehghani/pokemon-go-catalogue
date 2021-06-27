@@ -9,7 +9,7 @@ interface SnackbarProps {
 
 export const Snackbar: FC<SnackbarProps> = (props) => {
   return (
-    <SnakbarContainer>
+    <SnakbarContainer data-testid="snackbar">
       <RowContainer>
         {props.title && <p>{props.title}</p>}
         {props.children}

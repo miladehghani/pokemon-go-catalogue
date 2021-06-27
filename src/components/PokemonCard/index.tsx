@@ -28,7 +28,12 @@ export const PokemonCard = (props: PokemonCardProps) => {
   }, [pokemonId, history]);
 
   return (
-    <Card position="relative" borderRadius="16px" selected={props.selected}>
+    <Card
+      data-testid={`card-${pokemon.name}`}
+      position="relative"
+      borderRadius="16px"
+      selected={props.selected}
+    >
       <RowContainer
         align="center"
         justify="space-between"
@@ -42,7 +47,11 @@ export const PokemonCard = (props: PokemonCardProps) => {
           unCheckedIcon={"favorite_border"}
           color={"red"}
         />
-        <CheckBox checked={props.selected} onChange={props.onSelectChange} />
+        <CheckBox
+          dataTestId={`checkbox-${pokemon.name}`}
+          checked={props.selected}
+          onChange={props.onSelectChange}
+        />
       </RowContainer>
       <Title>{pokemon.name}</Title>
       <Thumbnail
