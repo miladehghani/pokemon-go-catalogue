@@ -19,7 +19,6 @@ class PokemonService {
   }
 
   async getGenerationById(id: number): Promise<Generation> {
-    console.log("id", id);
     return fetch(`${baseUrl}/generation/${id}`).then((res) => res.json());
   }
 

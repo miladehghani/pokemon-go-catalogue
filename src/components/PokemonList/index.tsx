@@ -8,7 +8,8 @@ import { useInfiniteScroll } from "hooks/infiniteScroll";
 import { useCallback, useState } from "react";
 import { Button } from "components/@ui/Button";
 import { extractIdFromUrl } from "utils/string";
-import { useLocalStorage } from "hooks/localStorage";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { addToFavorite } from "store/slices/favorites";
 
 interface PokemonListProps {
   pokemonsResource: Resource[];
@@ -17,6 +18,8 @@ interface PokemonListProps {
 export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
   const [count, setCount] = useState(20);
   const [selectedItems, setSelectedItems] = useState<any>([]);
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector((state) => state.favorites);
 
   const onScroll = useInfiniteScroll(
     () => count < pokemonsResource.length && setCount(count + 20)
@@ -59,8 +62,8 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
             pokemon={pokemon}
             selected={selectedItems[pokemon.url]}
             onSelectChange={() => selectHandler(pokemon)}
-            favorite={false}
-            onFavoriteChanged={() => true}
+            favorite={favorites[pokemon.url]}
+            onFavoriteChanged={() => dispatch(addToFavorite(pokemon))}
           />
         ))}
         {numberOfSelectedItems > 0 && (

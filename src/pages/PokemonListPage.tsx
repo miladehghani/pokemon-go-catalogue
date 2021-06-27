@@ -10,10 +10,12 @@ import { Loading } from "components/Loading";
 import { GenerationsList } from "components/GenerationsList";
 import { useState } from "react";
 import { union } from "utils/array";
+import { useAppSelector } from "hooks/redux";
 
 export const PokemonListPage = () => {
   const searchInput = useInput("");
-  const favorites = {};
+  const favorites = useAppSelector((state) => state.favorites);
+
   const [selectedGenerationId, setSelectedGenerationId] = useState<number>(-1);
   const [favFilter, setFavFilter] = useState(false);
   const {
