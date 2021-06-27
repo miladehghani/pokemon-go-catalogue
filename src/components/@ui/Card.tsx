@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 interface CardProps {
+  position?: string;
   borderRadius?: string;
   selected?: boolean;
 }
@@ -15,6 +16,8 @@ export const Card = styled.div<CardProps>`
   width: 90%;
   height: 200px;
   box-shadow: 2px 2px 4px 2px #a7a7a7;
+
+  ${(props) => props.position && `position: ${props.position};`}
   ${(props) => props.borderRadius && `border-radius: ${props.borderRadius};`}
 
   ${(props) =>

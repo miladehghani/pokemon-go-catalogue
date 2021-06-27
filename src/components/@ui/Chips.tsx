@@ -15,7 +15,11 @@ export const Chips = styled.span<ChipsProps>`
   ${(props) =>
     !props.active
       ? `background: ${props.background || "#fdc00d"};
-            color: ${props.background || "#2d4494"};`
-      : `background: ${props.background || "#2d4494"};
+            color: ${props.color || "#2d4494"};`
+      : `background: ${props.color || "#2d4494"};
             color: ${props.background || "#fdc00d"};`}
+
+  :hover {
+    opacity: 0.7;
+  }
 `;

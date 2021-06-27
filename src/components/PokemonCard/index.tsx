@@ -6,15 +6,19 @@ import { Thumbnail } from "components/@ui/Thumbnail";
 import { Title } from "components/@ui/Typography";
 import { CheckBox } from "components/CheckBox";
 import { useCallback, useState } from "react";
+import { FavoriteButton } from "components/FavoriteButton";
 
 interface PokemonCardProps {
   pokemon: Resource;
   selected: boolean;
+  favorite: boolean;
+  onFavoriteChanged: () => void;
   onSelectChange: (value: boolean) => void;
 }
 
 export const PokemonCard = (props: PokemonCardProps) => {
   const { pokemon } = props;
+
   const pokemonId = extractIdFromUrl(pokemon.url);
   const [hovered, setHovered] = useState(false);
   const history = useHistory();
@@ -25,13 +29,17 @@ export const PokemonCard = (props: PokemonCardProps) => {
 
   return (
     <Card
-      borderRadius="50%"
+      position="relative"
+      borderRadius="16px"
       selected={props.selected}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      <FavoriteButton
+        onChange={props.onFavoriteChanged}
+        checked={props.favorite}
+      />
       <Title>{pokemon.name}</Title>
-
       <CheckBox
         label="select to compare"
         _key={props.pokemon.name}
@@ -39,7 +47,6 @@ export const PokemonCard = (props: PokemonCardProps) => {
         onChange={props.onSelectChange}
         visiblity={hovered || props.selected ? "visible" : "hidden"}
       />
-
       <Thumbnail
         onClick={onCardClick}
         loading="lazy"

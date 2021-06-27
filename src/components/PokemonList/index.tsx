@@ -8,6 +8,7 @@ import { useInfiniteScroll } from "hooks/infiniteScroll";
 import { useCallback, useState } from "react";
 import { Button } from "components/@ui/Button";
 import { extractIdFromUrl } from "utils/string";
+import { useLocalStorage } from "hooks/localStorage";
 
 interface PokemonListProps {
   pokemonsResource: Resource[];
@@ -16,6 +17,7 @@ interface PokemonListProps {
 export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
   const [count, setCount] = useState(20);
   const [selectedItems, setSelectedItems] = useState<any>([]);
+
   const onScroll = useInfiniteScroll(
     () => count < pokemonsResource.length && setCount(count + 20)
   );
@@ -28,14 +30,15 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
     }
     setSelectedItems({ ...selectedItems });
   };
+
   const clearSelections = useCallback(() => {
     setSelectedItems({});
   }, []);
 
   const getSelectedItemsIds = () =>
     Object.entries(selectedItems)
-      .filter(([key, value]) => value)
-      .map(([key, value]) => extractIdFromUrl(key));
+      .filter(([_, value]) => value)
+      .map(([key, _]) => extractIdFromUrl(key));
 
   const numberOfSelectedItems = Object.values(selectedItems).filter(
     (item) => item
@@ -56,6 +59,8 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
             pokemon={pokemon}
             selected={selectedItems[pokemon.url]}
             onSelectChange={() => selectHandler(pokemon)}
+            favorite={false}
+            onFavoriteChanged={() => true}
           />
         ))}
         {numberOfSelectedItems > 0 && (
