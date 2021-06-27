@@ -24,8 +24,14 @@ export const GenerationsList = (props: GenerationsListProps) => {
   });
 
   useEffect(() => {
-    selected && props.onChange(extractIdFromUrl(selected.url));
+    if (selected) props.onChange(extractIdFromUrl(selected.url));
+    else props.onChange(-1);
   }, [selected, props.onChange]);
+
+  const onClickChips = (generation: Resource) => {
+    if (selected && generation.url === selected.url) setSelected(undefined);
+    else setSelected(generation);
+  };
 
   if (isLoading) return null;
   if (error) return <p>Error</p>;
@@ -39,16 +45,16 @@ export const GenerationsList = (props: GenerationsListProps) => {
     );
   else
     return (
-      <RowContainer padding="8px 0">
+      <>
         {generations.results.map((generation) => (
           <Chips
             key={generation.url}
-            onClick={() => setSelected(generation)}
+            onClick={() => onClickChips(generation)}
             active={selected && generation.url === selected.url}
           >
             {generation.name}
           </Chips>
         ))}
-      </RowContainer>
+      </>
     );
 };

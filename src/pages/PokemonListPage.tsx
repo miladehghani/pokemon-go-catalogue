@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { useInput } from "hooks/input";
-import { Input } from "components/@ui/Input";
+import { SearchInput } from "components/SearchInput";
 import { Chips } from "components/@ui/Chips";
 import { RowContainer } from "components/@ui/FlexBox";
 import { pokemonService } from "services/pokemonService";
@@ -61,8 +61,8 @@ export const PokemonListPage = () => {
 
   return (
     <>
-      <Input placeholder={"Search by name"} {...searchInput} />
-      <RowContainer>
+      <SearchInput placeholder={"Search by name"} {...searchInput} />
+      <RowContainer wrap="wrap">
         <GenerationsList onChange={setSelectedGenerationId} />
         <Chips
           active={favFilter}
