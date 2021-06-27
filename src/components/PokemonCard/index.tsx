@@ -6,7 +6,7 @@ import { Thumbnail } from "components/@ui/Thumbnail";
 import { Title } from "components/@ui/Typography";
 import { CheckBox } from "components/CheckBox";
 import { useCallback, useState } from "react";
-import { FavoriteButton } from "components/FavoriteButton";
+import { IconButton } from "components/IconButton";
 import { RowContainer } from "components/@ui/FlexBox";
 
 interface PokemonCardProps {
@@ -35,9 +35,12 @@ export const PokemonCard = (props: PokemonCardProps) => {
         width="84%"
         margin="8% 0 0 0"
       >
-        <FavoriteButton
-          onChange={props.onFavoriteChanged}
+        <IconButton
           checked={props.favorite}
+          onChange={props.onFavoriteChanged}
+          checkedIcon={"favorite"}
+          unCheckedIcon={"favorite_border"}
+          color={"red"}
         />
         <CheckBox checked={props.selected} onChange={props.onSelectChange} />
       </RowContainer>

@@ -1,6 +1,8 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { RowContainer } from "components/@ui/FlexBox";
+import { IconButton } from "components/IconButton";
+import { defaultTheme } from "theme";
 
 interface CheckBoxProps {
   label?: string;
@@ -15,11 +17,11 @@ export const CheckBox: FC<CheckBoxProps> = (props) => {
       margin={props.margin}
       onClick={() => props.onChange(!props.checked)}
     >
-      {
-        <span className="material-icons">
-          {props.checked ? "check_box" : "check_box_outline_blank"}
-        </span>
-      }
+      <IconButton
+        checked={props.checked}
+        checkedIcon="check_box"
+        unCheckedIcon="check_box_outline_blank"
+      />
       {props.label && <Label>{props.label}</Label>}
     </Container>
   );
