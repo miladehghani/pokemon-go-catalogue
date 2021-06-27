@@ -22,4 +22,8 @@ export const Chips = styled.span<ChipsProps>`
   :hover {
     opacity: 0.7;
   }
+
+  @media (max-width: 620px) {
+    font-size: 0.92em;
+  }
 `;
