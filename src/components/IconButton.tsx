@@ -6,11 +6,13 @@ interface IconButtonProps {
   checked?: boolean;
   onChange?: () => void;
   color?: string;
+  dataTestId?: string;
 }
 
 export const IconButton = (props: IconButtonProps) => {
   return (
     <Span
+      data-testid={props.dataTestId}
       className="material-icons"
       onClick={() => props.onChange && props.onChange()}
       color={props.color}

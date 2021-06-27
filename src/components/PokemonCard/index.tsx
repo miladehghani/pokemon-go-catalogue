@@ -41,6 +41,7 @@ export const PokemonCard = (props: PokemonCardProps) => {
         margin="8% 0 0 0"
       >
         <IconButton
+          dataTestId={`favorite-button-${pokemon.name}`}
           checked={props.favorite}
           onChange={props.onFavoriteChanged}
           checkedIcon={"favorite"}

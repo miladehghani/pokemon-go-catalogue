@@ -65,6 +65,7 @@ export const PokemonListPage = () => {
       <RowContainer wrap="wrap" margin="6px 0 16px 0">
         <GenerationsList onChange={setSelectedGenerationId} />
         <Chips
+          data-testid="favorite-filter-button"
           active={favFilter}
           background={defaultTheme.colors.grey[4]}
           color="red"
