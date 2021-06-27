@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Resource } from "types/pokemon";
 import { Chips } from "components/@ui/Chips";
-import { RowContainer } from "components/@ui/FlexBox";
 import { Center } from "components/@ui/Center";
 import { extractIdFromUrl } from "utils/string";
 import { useQuery } from "react-query";
@@ -12,7 +11,7 @@ interface GenerationsListProps {
   onChange: (generationId: number) => void;
 }
 
-export const GenerationsList = (props: GenerationsListProps) => {
+export const GenerationsList = ({ onChange }: GenerationsListProps) => {
   const [selected, setSelected] = useState<Resource>();
 
   const {
@@ -24,9 +23,9 @@ export const GenerationsList = (props: GenerationsListProps) => {
   });
 
   useEffect(() => {
-    if (selected) props.onChange(extractIdFromUrl(selected.url));
-    else props.onChange(-1);
-  }, [selected, props.onChange]);
+    if (selected) onChange(extractIdFromUrl(selected.url));
+    else onChange(-1);
+  }, [selected, onChange]);
 
   const onClickChips = (generation: Resource) => {
     if (selected && generation.url === selected.url) setSelected(undefined);

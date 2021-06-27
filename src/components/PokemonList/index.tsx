@@ -4,11 +4,11 @@ import { Resource } from "types/pokemon";
 import { Grid } from "components/@ui/Grid";
 import { Snackbar } from "components/Snackbar";
 import { Center } from "components/@ui/Center";
-import { useInfiniteScroll } from "hooks/infiniteScroll";
+import { useInfiniteScroll } from "hooks/useInfiniteScroll";
 import { useCallback, useState } from "react";
 import { Button } from "components/@ui/Button";
 import { extractIdFromUrl } from "utils/string";
-import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { useAppDispatch, useAppSelector } from "hooks/storeHooks";
 import { addToFavorite } from "store/slices/favorites";
 
 interface PokemonListProps {

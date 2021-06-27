@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { useInput } from "hooks/input";
+import { useInput } from "hooks/useInput";
 import { SearchInput } from "components/SearchInput";
 import { Chips } from "components/@ui/Chips";
 import { RowContainer } from "components/@ui/FlexBox";
@@ -10,7 +10,7 @@ import { Loading } from "components/Loading";
 import { GenerationsList } from "components/GenerationsList";
 import { useState } from "react";
 import { union } from "utils/array";
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector } from "hooks/storeHooks";
 
 export const PokemonListPage = () => {
   const searchInput = useInput("");
