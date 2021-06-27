@@ -4,8 +4,8 @@ export const Button = styled.button`
   height: 24px;
   border-radius: 8px;
   border: none;
-  background: #fdc00d;
-  color: #2d4494;
+  background: ${(props) => props.theme.primary}
+  color: ${(props) => props.theme.secondary}
   font-size: 14px;
   cursor: pointer;
   :hover {

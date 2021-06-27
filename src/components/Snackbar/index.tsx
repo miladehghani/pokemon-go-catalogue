@@ -26,7 +26,7 @@ const SnakbarContainer = styled(RowContainer)`
   bottom: 12px;
   right: 12px;
   height: 42px;
-  background: #2d4494;
+  background: ${(props) => props.theme.colors.secondary};
   border-radius: 12px;
   width: 30%;
   align-items: center;

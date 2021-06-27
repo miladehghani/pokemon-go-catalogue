@@ -1,6 +1,6 @@
 import { Pokemon } from "types/pokemon";
 import { ColumnContainer } from "components/@ui/FlexBox";
-import { ChipsList } from "components/@ui/ChipsList";
+import { ChipsList } from "components/ChipsList";
 
 interface PokemonSkillsProps {
   pokemon: Pokemon;

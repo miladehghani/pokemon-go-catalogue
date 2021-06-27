@@ -26,9 +26,8 @@ export const CheckBox: FC<CheckBoxProps> = (props) => {
 const Input = styled.input`
   height: 16px;
   width: 16px;
-  color: #ababab;
 `;
 
 const Label = styled.label`
-  color: #ababab;
+  color: ${(props) => props.theme.colors.grey[7]};
 `;

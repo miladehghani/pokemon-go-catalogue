@@ -11,6 +11,7 @@ import { GenerationsList } from "components/GenerationsList";
 import { useState } from "react";
 import { union } from "utils/array";
 import { useAppSelector } from "hooks/storeHooks";
+import { defaultTheme } from "theme";
 
 export const PokemonListPage = () => {
   const searchInput = useInput("");
@@ -62,11 +63,11 @@ export const PokemonListPage = () => {
   return (
     <>
       <SearchInput placeholder={"Search by name"} {...searchInput} />
-      <RowContainer wrap="wrap">
+      <RowContainer wrap="wrap" margin="6px 0 16px 0">
         <GenerationsList onChange={setSelectedGenerationId} />
         <Chips
           active={favFilter}
-          background="#d6d6d6"
+          background={defaultTheme.colors.grey[4]}
           color="red"
           onClick={() => setFavFilter(!favFilter)}
         >

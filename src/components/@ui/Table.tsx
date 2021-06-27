@@ -8,16 +8,16 @@ export const Table = styled.table`
   th {
     width: 10vw;
     text-align: left;
-    color: #2d4494;
+    color: ${(props) => props.theme.colors.secondary};
   }
 
   td {
-    color: #3c3c3c;
+    color: ${(props) => props.theme.colors.grey[8]};
   }
 
   th,
   td {
-    border-bottom: solid 2px #fdc00d;
+    border-bottom: solid 2px ${(props) => props.theme.colors.primary};
     height: 28px;
   }
 
@@ -34,7 +34,7 @@ export const Table = styled.table`
 `;
 
 export const TableContainer = styled.div`
-  box-shadow: 2px 2px 4px 2px #a7a7a7;
+  box-shadow: ${(props) => props.theme.shadows[4]};
   border-radius: 0 16px 16px 0;
 
   @media (max-width: 580px) {

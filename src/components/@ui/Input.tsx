@@ -6,7 +6,7 @@ export const Input = styled.input`
   border-radius: 4px;
   border: none;
   outline: none;
-  background: #e7e7e7;
+  background: ${(props) => props.theme.colors.grey[3]};
   padding: 1%;
   font-size: 1.2em;
 `;

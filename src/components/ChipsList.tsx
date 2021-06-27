@@ -25,5 +25,5 @@ const Label = styled.label`
   margin-bottom: 0.5%;
   font-size: 20px;
   font-weight: 600;
-  color: #3c3c3c;
+  color: ${(props) => props.theme.colors.grey[9]};
 `;

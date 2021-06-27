@@ -15,7 +15,7 @@ export const Card = styled.div<CardProps>`
   margin: auto;
   width: 90%;
   height: 200px;
-  box-shadow: 2px 2px 4px 2px #a7a7a7;
+  box-shadow: ${(props) => props.theme.shadows[4]};
 
   ${(props) => props.position && `position: ${props.position};`}
   ${(props) => props.borderRadius && `border-radius: ${props.borderRadius};`}
@@ -23,7 +23,7 @@ export const Card = styled.div<CardProps>`
   ${(props) =>
     props.selected &&
     `
-    background: #eeeeee;
-    transform: scale(1.03);
-  `}
+      background: ${props.theme.colors.grey[3]};
+      transform: scale(1.03);
+    `};
 `;
