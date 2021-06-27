@@ -7,11 +7,11 @@ interface GridProps {
 export const Grid = styled.div<GridProps>`
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  gap: 16px;
+  gap: 28px 12px;
   height: ${(props) => props.height || "100%"};
   width: 100%;
   overflow: hidden auto;
-  padding: 1% 0;
+  padding: 6px 0;
   justify-items: center;
 
   @media (min-width: 400.98px) {

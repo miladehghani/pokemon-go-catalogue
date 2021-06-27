@@ -55,7 +55,7 @@ export const PokemonList = ({ pokemonsResource }: PokemonListProps) => {
     );
   else
     return (
-      <Grid onScroll={onScroll} height="calc(100vh - 164px)">
+      <Grid onScroll={onScroll} height="calc(100% - 122px)">
         {pokemonsResource.slice(0, count).map((pokemon) => (
           <PokemonCard
             key={pokemon.name}
