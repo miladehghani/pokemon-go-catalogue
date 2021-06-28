@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# Getting Started guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In the project directory, you can run
 
-## Available Scripts
+- `yarn start` to start localy
+- `yarn test` to run tests
 
-In the project directory, you can run:
+**Dont Forget to run `yarn` or `npm install` first**
 
-### `yarn start`
+# Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project was bootstrapped with `Create React App` with Typescript template, source code lives under `src` folder
+`__mock__` folder contains mocked api response for testing purpose and `testUtils` are shared functions between all test files.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Src
 
-### `yarn test`
+- components: contains all react components such as `snackbar`, `AppHeader`, etc.
+  - @ui: contains atomic components inherited only from `styled-components`
+- pages: contains all pages which has been handled by `react-router`
+- hooks: contains custom react hooks
+- routes: routes definition
+- services: contains pokemonService which makes api calls to fetch pokemons data
+- store: everything related to redux
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Libraries
 
-### `yarn build`
+I useed most common libraries such as `react-router`, `react-redux`, `react-query` and `styled-component`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `react-router` is the best routing library available.
+- `react-redux` alongside `redux-persist` is used to handle favorite list, i could use `useContext` with `localstorage` but i choose to have redux becuse of it's flexible and extendble, also we can't use context for states with high change rate.
+- `react-query` has been used for handlding api calls from pokemon service, which gives us a nice and clean way to make api calls, under the hood it handles caching and state managment.
+- `styled-component` has been used to give css styles to my component, it's a great and well known library which supports typescript perfectly, which keeps components clean and all in one place which makes the code far more readble.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Challenges
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I had a major challenges over generation filter. i wanted it to be nice and clean but on the other hand the api has not any feature that gives me the ability to filter pokemons by the generation.
+It took me a while to find out that the name of species and pokemons have overlaps, so i could filter pokemons easily by searching species name in pokemons name and filtering out the result.
 
-### `yarn eject`
+# Extra Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- You can combile filters `search`, `generations`, `favorite`
+- You can compare multiple pokemon at same time
+- I also added a back button in the header
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# More Time!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- I would show differents between pokemons abilities and moves so users can find out differents more easily.
+- I would add a contest page so users can select 2 pokemon and make them fight based on their types.
+- I would add a page for abilities description.
