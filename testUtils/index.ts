@@ -1,5 +1,5 @@
-import { Wrapper } from "./Wrapper";
+import { TestAppProvider } from "./TestAppProvider";
 import { pokemonService } from "./mockedPokemonService";
 import { delay } from "./delay";
 
-export { Wrapper, pokemonService, delay };
+export { TestAppProvider, pokemonService, delay };

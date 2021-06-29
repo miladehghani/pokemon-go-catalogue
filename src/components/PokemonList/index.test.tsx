@@ -2,14 +2,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { PokemonList } from "components/PokemonList";
 import mockedPokemonsListResponse from "../../../__mock__/pokemonsList.json";
-import { Wrapper } from "../../../testUtils";
+import { TestAppProvider } from "../../../testUtils";
 
 describe("pokemon list with multiple pokemon", () => {
   beforeEach(() => {
     render(
-      <Wrapper>
+      <TestAppProvider>
         <PokemonList pokemonsResource={mockedPokemonsListResponse.results} />
-      </Wrapper>
+      </TestAppProvider>
     );
   });
 
@@ -47,9 +47,9 @@ describe("pokemon list with multiple pokemon", () => {
 
 test("display empty message when there is no pokemon", async () => {
   render(
-    <Wrapper>
+    <TestAppProvider>
       <PokemonList pokemonsResource={[]} />
-    </Wrapper>
+    </TestAppProvider>
   );
 
   expect(screen.getByTestId("no-result")).toBeInTheDocument();

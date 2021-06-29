@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen, waitFor } from "@testing-library/react";
 import { PokemonListPage } from "./PokemonListPage";
-import { Wrapper, pokemonService, delay } from "../../testUtils";
+import { TestAppProvider, pokemonService, delay } from "../../testUtils";
 import mockPokemonListResponse from "../../__mock__/pokemonsList.json";
 import mockGenerationListResponse from "../../__mock__/generationList.json";
 import mockFirstGenerationResponse from "../../__mock__/firstGeneration.json";
@@ -19,9 +19,9 @@ beforeEach(() => {
   pokemonService.getGenerations.mockResolvedValue(mockGenerationListResponse);
 
   render(
-    <Wrapper>
+    <TestAppProvider>
       <PokemonListPage />
-    </Wrapper>
+    </TestAppProvider>
   );
 });
 
