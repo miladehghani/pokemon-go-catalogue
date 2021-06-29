@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { favoriteReducer } from "./slices/favorites";
-import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
+import { configureStore } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { favoriteReducer } from "./slices/favorites";
 
 const persistConfig = {
   key: "store-v1",
