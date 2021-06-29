@@ -6,25 +6,26 @@ import { Species } from "types/Species";
 const baseUrl = "https://pokeapi.co/api/v2";
 
 class PokemonService {
-  async fetchAllPokemon(): Promise<PaginatedResponse<Resource[]>> {
-    return fetch(`${baseUrl}/pokemon?limit=2000`).then((res) => res.json());
-  }
+  fetch = async (url: string) => {
+    const response = await fetch(url);
+    if (!response.ok) throw Error(await response.text());
+    return response.json();
+  };
 
-  async getPokemonById(id: number): Promise<Pokemon> {
-    return fetch(`${baseUrl}/pokemon/${id}`).then((res) => res.json());
-  }
+  fetchAllPokemon = async (): Promise<PaginatedResponse<Resource[]>> =>
+    this.fetch(`${baseUrl}/pokemon?limit=2000`);
 
-  async getGenerations(): Promise<PaginatedResponse<Resource[]>> {
-    return fetch(`${baseUrl}/generation`).then((res) => res.json());
-  }
+  getPokemonById = async (id: number): Promise<Pokemon> =>
+    this.fetch(`${baseUrl}/pokemon/${id}`);
 
-  async getGenerationById(id: number): Promise<Generation> {
-    return fetch(`${baseUrl}/generation/${id}`).then((res) => res.json());
-  }
+  getGenerations = async (): Promise<PaginatedResponse<Resource[]>> =>
+    this.fetch(`${baseUrl}/generation`);
 
-  async getSpeciesById(id: number): Promise<Species> {
-    return fetch(`${baseUrl}/pokemon-species/${id}/`).then((res) => res.json());
-  }
+  getGenerationById = async (id: number): Promise<Generation> =>
+    this.fetch(`${baseUrl}/generation/${id}`);
+
+  getSpeciesById = (id: number): Promise<Species> =>
+    this.fetch(`${baseUrl}/pokemon-species/${id}/`);
 }
 
 export { PokemonService };
